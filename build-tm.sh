@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Recreate git-sdk-$VERSION.exe
+# builds and packs texmacs for windows on Msys2/Mingw32
 
 
 ARCH="$(uname -m)"
