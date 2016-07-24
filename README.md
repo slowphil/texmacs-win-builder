@@ -3,7 +3,7 @@
 This repository provides tools to compile TeXmacs for windows, and a resulting executable zip that can install TeXmacs on a windows machine.
 
 The build process is done using the [MSys2/Mingw-w32/Mingw-w64](https://sourceforge.net/p/msys2/wiki/MSYS2%20introduction/) environment.
-The setup of the environment, the compilation and the packaging is done in a single step (no complicated how-to to follow!) by running the XXX executable. This whole stuff is essentially a modified version of the Git for Windows SDK (many thanks to them for making this so easy).
+The setup of the environment, the compilation and the packaging is done in a single step (no complicated how-to to follow!) by running [the released executable](https://github.com/slowphil/texmacs-win-builder/releases/download/v0.9/texmacs-win-sdk-installer-0.9.7z.exe). This whole stuff is essentially a modified version of the Git for Windows SDK (many thanks to them for making this so easy).
 
 
 ##Pros
@@ -43,13 +43,13 @@ The setup of the environment, the compilation and the packaging is done in a sin
 
 ##Key files that drive the build process (where to look in case of problems)
 
-After unpacking XXX, the setup-tm-sdk.bat batch file is run. It will download and setup the build environment, open an MSys2 shell and run the build-tm.sh script in it.
+After unpacking [the released executable](https://github.com/slowphil/texmacs-win-builder/releases/download/v0.9/texmacs-win-sdk-installer-0.9.7z.exe), the setup-tm-sdk.bat batch file is run. It will download and setup the build environment, open an MSys2 shell and run the build-tm.sh script in it.
 
 build-tm.sh will 
 
 - invoke pacman to download readily-built dependencies needed by TeXmacs (qt4, freetype, ...).
 
-- (re-)build three of the dependencies from source using makepkg-mingw: poppler-qt4 (the readily-built package has an option that prevents TeXmacs to start), wget and guile1.8 (that are not available already built - for guile we use the sibbling repo [mingw-w64-guile1.8]())
+- (re-)build three of the dependencies from source using makepkg-mingw: poppler-qt4 (the readily-built package has an option that prevents TeXmacs to start), wget and guile1.8 (that are not available already built - for guile we use the sibbling repo [mingw-w64-guile1.8](https://github.com/slowphil/mingw-w64-guile1.8))
 
-- pull the sibbling repo [mingw-w64-texmacs]() and invoke makepkg-mingw to build it. The details of the build options are set in the PKGBUILD of that repo : it will pull the latest svn source, possibly apply patches, then compile, and finally bundle everything that is needed to install on a windows machine in an executable zip file, making a poor man's installer.
+- pull the sibbling repo [mingw-w64-texmacs](https://github.com/slowphil/mingw-w64-texmacs) and invoke makepkg-mingw to build it. The details of the build options are set in the PKGBUILD of that repo : it will pull the latest svn source, possibly apply patches, then compile, and finally bundle everything that is needed to install on a windows machine in an executable zip file, making a poor man's installer.
 
