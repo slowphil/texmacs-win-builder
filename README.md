@@ -1,4 +1,4 @@
-#tm-win-builder
+#TeXmacs-win-builder
 
 This repository provides tools to compile TeXmacs for windows, and a resulting executable zip that can install TeXmacs on a windows machine.
 
