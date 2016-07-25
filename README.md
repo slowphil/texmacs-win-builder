@@ -3,7 +3,7 @@
 This repository provides tools to compile TeXmacs for windows, and a resulting executable zip that can install TeXmacs on a windows machine.
 
 The build process is done using the [MSys2/Mingw-w32/Mingw-w64](https://sourceforge.net/p/msys2/wiki/MSYS2%20introduction/) environment.
-The setup of the environment, the compilation and the packaging is done in a single step (no complicated how-to to follow!) by running [the released executable](https://github.com/slowphil/texmacs-win-builder/releases/download/v0.9/texmacs-win-sdk-installer-0.9.7z.exe). This whole stuff is essentially a modified version of the Git for Windows SDK (many thanks to them for making this so easy).
+The setup of the environment, the compilation and the packaging is done in a single step (no complicated how-to to follow!) by running [the released executable](https://github.com/slowphil/texmacs-win-builder/releases/download/v0.9/texmacs-win-sdk-installer-0.9.7z.exe). This whole stuff is essentially a modified version of the [Git for Windows SDK](https://git-for-windows.github.io/#contribute) (many thanks to them for making this so easy).
 
 
 ##Pros
@@ -16,25 +16,23 @@ The setup of the environment, the compilation and the packaging is done in a sin
 
 - This version of TeXmacs can be used as an "equation editor" for Inkscape
 
-- Latest versions of the dependencies are used (notably Ghostscript).
+- In spite of packing significantly more stuff than the official build, the resulting installation is smaller on the disk. This is due to using a more recent compiler and better settings. 
+
+- This building environment and the dependencies are always up-to-date.
 
 - Once the compilation is over, an up-to-date, full-featured build environment remains available for building an updated version later on (saving the long download and install), or for those willing to tweak the code or customize their own TeXmacs installation (familiarity with unix-like environment needed). This environment can also be used for building other great opensource softwares.
-
-- This building environment is not frozen in time: it will be still valid when TeXmacs switches to Qt5, for instance. 
 
 
 ##Cons
 
-- The resulting TeXmacs installation is larger than the official one, with many more dlls.
-
-- The sdk is HUGE on disk.
+- The sdk is HUGE on disk. I made no attempt to minimize its size. It can probably be reduced at least by half. 
 
 - If there is an issue with this build, it should be filed here before reporting it to the official site.
 
 
 ##Requirements
 
-- Disk space needed for the building environment : nearly 5 GB. I made no attempt to minimize its size. It can probably be reduced at least by half. 
+- Disk space needed for the building environment : nearly 5 GB.
 
 - Internet access (with large bandwidth, preferably)
 
