@@ -76,5 +76,26 @@ cd mingw-w64-texmacs/
 MINGW_INSTALLS=mingw32 makepkg-mingw -sL --noconfirm 
 
 
-#package texmacs
-
+#end
+reset
+echo 
+echo 
+if test -f /texmacs_installer.7z.exe ; then
+  echo "**********************************************************" 
+  echo "*                                                        *"
+  echo "*          TeXmacs was successfully built !              *"
+  echo "*                                                        *"
+  echo "**********************************************************" 
+  echo "You can find it here :"
+  echo  "$(cygpath -aw /texmacs-installer.7z.exe)"
+else
+  echo "**********************************************************" 
+  echo "*                                                        *"
+  echo "*      The TeXmacs installer was not created...          *"
+  echo "*                                                        *"
+  echo "*            something went wrong :(                     *"
+  echo "**********************************************************" 
+fi
+echo 
+read -p "Press Enter to close this window..."  
+  
