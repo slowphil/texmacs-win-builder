@@ -20,7 +20,7 @@ The setup of the environment, the compilation and the packaging is done in a sin
 
 - This building environment and the dependencies are always up-to-date.
 
-- Once the compilation is over, an up-to-date, full-featured build environment remains available for building an updated version later on (saving the long download and install), or for those willing to tweak the code or customize their own TeXmacs installation (familiarity with unix-like environment needed). This environment can also be used for building other great opensource softwares.
+- Once the compilation is over, an up-to-date, full-featured build environment remains available for building an updated version later on (saving the long download and install), or for those willing to tweak the code or customize their own TeXmacs installation (familiarity with unix-like environment needed). This environment can also be used for building other great open source softwares.
 
 
 ##Cons
@@ -47,7 +47,7 @@ build-tm.sh will
 
 - invoke pacman to download readily-built dependencies needed by TeXmacs (qt4, freetype, ...).
 
-- (re-)build three of the dependencies from source using makepkg-mingw: poppler-qt4 (the readily-built package has an option that prevents TeXmacs to start), wget and guile1.8 (that are not available already built - for guile we use the sibbling repo [mingw-w64-guile1.8](https://github.com/slowphil/mingw-w64-guile1.8))
+- (re-)build three of the dependencies from source using makepkg-mingw: poppler-qt4 (the readily-built package has an option that prevents TeXmacs to start), wget and guile1.8 (that are not available already built - for guile we use the sibling repo [mingw-w64-guile1.8](https://github.com/slowphil/mingw-w64-guile1.8))
 
-- pull the sibbling repo [mingw-w64-texmacs](https://github.com/slowphil/mingw-w64-texmacs) and invoke makepkg-mingw to build it. The details of the build options are set in the PKGBUILD of that repo : it will pull the latest svn source, possibly apply patches, then compile, and finally bundle everything that is needed to install on a windows machine in an executable zip file, making a poor man's installer.
+- pull the sibling repo [mingw-w64-texmacs](https://github.com/slowphil/mingw-w64-texmacs) and invoke makepkg-mingw to build it. The details of the build options are set in the PKGBUILD of that repo : it will pull the latest svn source, possibly apply patches, then compile, and finally bundle everything that is needed to install on a windows machine in an executable zip file, making a poor man's installer.
 
