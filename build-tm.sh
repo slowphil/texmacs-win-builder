@@ -67,6 +67,36 @@ else
 fi
 fi
 
+# get inno setup
+if test ! -d "/build/inno" ; then
+mkdir /build/inno
+cd /build/inno
+#first a utility to unpack inno setup itself without running it
+if test ! -z "/build/inno/innounp.exe" ; then
+wget https://downloads.sourceforge.net/project/innounp/innounp/innounp%200.46/innounp046.rar ;
+unrar e innounp046.rar ;
+rm *.rar
+fi
+# then inno setup
+if test ! -z "/build/inno/inno_setup/ISCC.exe" ; then
+wget http://files.jrsoftware.org/is/5/isetup-5.5.8.exe ;
+./innounp.exe -dinno_setup -c{app} -v -x isetup-5.5.8.exe ;
+rm isetup-5.5.8.exe
+fi
+fi
+
+# get winsparkle
+if test ! -d "/build/winsparkle" ; then
+mkdir /build/winsparkle
+cd /build/winsparkle
+wget https://github.com/vslavik/winsparkle/releases/download/v0.5.3/WinSparkle-0.5.3.zip
+unzip WinSparkle-0.5.3.zip
+rm *.zip
+cd WinSparkle-*
+cp include/* ..
+cp Release/* ..
+fi
+
 # now, finally download and build texmacs
 cd /build
 if test ! -d mingw-w64-texmacs ; then

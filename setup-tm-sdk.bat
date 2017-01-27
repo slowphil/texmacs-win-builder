@@ -143,7 +143,7 @@
 	base python less openssh patch make tar diffutils ca-certificates ^
 	git subversion mintty vim p7zip markdown winpty ^
  	mingw-w64-i686-toolchain ^
-    base-devel
+    base-devel unzip
   
 
 @IF ERRORLEVEL 1 GOTO INSTALL_REST
