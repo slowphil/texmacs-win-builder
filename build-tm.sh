@@ -110,14 +110,14 @@ MINGW_INSTALLS=mingw32 makepkg-mingw -sL --noconfirm
 reset
 echo 
 echo 
-if test -f /texmacs_installer.7z.exe ; then
+if test -f /texmacs_installer.exe ; then
   echo "**********************************************************" 
   echo "*                                                        *"
   echo "*          TeXmacs was successfully built !              *"
   echo "*                                                        *"
   echo "**********************************************************" 
   echo "You can find it here :"
-  echo  "$(cygpath -aw /texmacs-installer.7z.exe)"
+  echo  "$(cygpath -aw /texmacs-installer.exe)"
 else
   echo "**********************************************************" 
   echo "*                                                        *"
