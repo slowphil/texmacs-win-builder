@@ -90,7 +90,7 @@ if test ! -d "/build/winsparkle" ; then
 mkdir /build/winsparkle
 cd /build/winsparkle
 wget https://github.com/vslavik/winsparkle/releases/download/v0.5.3/WinSparkle-0.5.3.zip
-unzip WinSparkle-0.5.3.zip
+7z x WinSparkle-0.5.3.zip
 rm *.zip
 cd WinSparkle-*
 cp include/* ..
