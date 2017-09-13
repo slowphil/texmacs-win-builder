@@ -107,7 +107,7 @@ MINGW_INSTALLS=mingw32 makepkg-mingw -sL --noconfirm
 
 
 #end
-reset
+#reset
 echo 
 echo 
 if test -f /texmacs_installer.exe ; then
