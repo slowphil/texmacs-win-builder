@@ -97,6 +97,15 @@ cp include/* ..
 cp Release/* ..
 fi
 
+# get SumatraPDF
+if test ! -d "/build/SumatraPDF" ; then
+mkdir /build/SumatraPDf
+cd /build/SumatraPDF
+wget https://www.sumatrapdfreader.org/dl/SumatraPDF-3.1.2.zip
+7z x SumatraPDF-3.1.2.zip
+rm *.zip
+fi
+
 # now, finally download and build texmacs
 cd /build
 if test ! -d mingw-w64-texmacs ; then
