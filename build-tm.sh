@@ -39,6 +39,16 @@ sed -i 's/93cc067b23c4ef7421380d3e8bd7c940b2027668446750787d7c1cb42720248e/96dd1
 sed -i 's/$}/${/g' ./PKGBUILD
 MINGW_INSTALLS=mingw32 makepkg-mingw -sLi --noconfirm
 
+# we build mingw-w64-wget from sources (no binary available)
+cd /build
+if test ! -d mingw-w64-wget ; then
+svn export https://github.com/Alexpux/MINGW-packages/trunk/mingw-w64-wget mingw-w64-wget
+fi
+cd mingw-w64-wget/
+MINGW_INSTALLS=mingw32 makepkg-mingw -sLi --noconfirm --skippgpcheck
+
+
+
 # guile 1.8 is not in the MSys2 repos, get it from my Githubs.
 cd /build
 if test ! -d mingw-w64-guile1.8 ; then
