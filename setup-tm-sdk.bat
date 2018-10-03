@@ -143,7 +143,7 @@
 	base python less openssh patch make tar diffutils ca-certificates ^
 	git subversion mintty vim p7zip markdown winpty ^
  	mingw-w64-i686-toolchain ^
-    base-devel unzip
+    base-devel
   
 
 @IF ERRORLEVEL 1 GOTO INSTALL_REST
@@ -176,6 +176,7 @@
 @REM	@bash --login -c 'SHORTCUT="$HOME/Desktop/Git SDK 32-bit.lnk"; test -f "$SHORTCUT" ^|^| create-shortcut.exe --icon-file /msys2.ico --work-dir / /git-bash.exe "$SHORTCUT"'
 
 	@REM now clone the Git sources, build it, and start an interactive shell
+@"%cwd%"\usr\bin\curl https://raw.githubusercontent.com/slowphil/texmacs-win-builder/master/build-tm.sh > "%cwd%"\build-tm.sh 
 @bash --login -c "cd / && bash ./build-tm.sh"
 
 	@IF ERRORLEVEL 1 PAUSE
