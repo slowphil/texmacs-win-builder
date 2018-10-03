@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Repack texmacs-win-sdk-$VERSION.exe
-
+export LANG=C # for objdump output in english
 test -z "$1" && {
 	echo "Usage: $0 <version>"
 	exit 1
@@ -77,19 +77,21 @@ fileList="etc/nsswitch.conf \
 	usr/bin/pacman-key \
 	usr/bin/tput.exe \
 	usr/bin/pacman.exe \
+    usr/bin/pacman-conf.exe \
+	usr/share/makepkg/util/parseopts.sh \
 	usr/bin/curl.exe \
 	usr/bin/gpg.exe \
 	$(dlls_for_exes /usr/bin/gpg.exe /usr/bin/curl.exe)
 	usr/ssl/certs/ca-bundle.crt \
 	var/lib/pacman \
 	setup-tm-sdk.bat $FAKEROOTDIR/etc $FAKEROOTDIR/usr \
-	build-tm.sh \
 	repack-sdk-installer.sh \
-	7zSD.sfx"
+    7zSD.sfx"
 
+echo $fileList
 
 echo "Creating archive" &&
-(cd / && 7za -x'!var/lib/pacman/*' a $OPTS7 "$TMPPACK" $fileList) &&
+(cd / && 7za -x'!var/lib/pacman/*' -x'!etc/pacman.d/gnupg/private-keys-v1.d' a $OPTS7 "$TMPPACK" $fileList) &&
 (cat "/7zSD.sfx" &&
  echo ';!@Install@!UTF-8!' &&
  echo 'Title="TeXmacs for Windows SDK"' &&
@@ -107,5 +109,5 @@ echo "Creating archive" &&
  echo ';!@InstallEnd@!' &&
  cat "$TMPPACK") > "$TARGET" &&
 echo "Success! You will find the new installer at \"$TARGET\"." &&
-echo "It is a self-extracting .7z archive." &&
+echo "It is a self-extracting .7z archive." #&&
 rm $TMPPACK
