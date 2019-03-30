@@ -21,6 +21,15 @@ if test ! -d /build ; then
 fi
 
 
+
+# pacman no longer finds qt4 probably because of https://github.com/msys2/MINGW-packages/issues/3881
+# nevertheless the binary still exists in the repo (for the moment)
+# https://msys2.duckdns.org/repos
+# https://wiki.archlinux.org/index.php/offline_installation_of_packages
+cd /var/cache/pacman/pkg
+wget http://repo.msys2.org/mingw/i686/mingw-w64-i686-qt4-4.8.7-4-any.pkg.tar.xz
+pacman --noconfirm -U mingw-w64-i686-qt4-4.8.7-4-any.pkg.tar.xz
+
 cd /build
 
 # libcurl option breaks poppler dll and exes on 32 bits
