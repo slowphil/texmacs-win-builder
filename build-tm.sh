@@ -126,6 +126,11 @@ MINGW_INSTALLS=mingw32 makepkg-mingw -sL --noconfirm
 
 #end
 #reset
+
+#clear package cache to free disk space
+cd /var/cache/pacman/pkg
+rm *.pkg.tar.xz
+
 echo 
 echo 
 if test -f /texmacs_installer.exe ; then
