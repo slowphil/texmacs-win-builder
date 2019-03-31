@@ -14,9 +14,7 @@ The setup of the environment, the compilation and the packaging is done in a sin
 
 - A spell checker is bundled with TeXmacs (additional dictionaries require manual install, though).
 
-- This version of TeXmacs can be used as an "equation editor" for Inkscape
-
-- In spite of packing significantly more stuff than the official build, the resulting installation is smaller on the disk. This is due to using a more recent compiler and better settings. 
+- This version of TeXmacs can be used as an "equation editor" for Inkscape an LibreOffice
 
 - This building environment and the dependencies are always created fully up-to-date.
 
@@ -32,7 +30,7 @@ The setup of the environment, the compilation and the packaging is done in a sin
 
 ## Requirements
 
-- Disk space needed for the building environment : nearly 5 GB.
+- Disk space needed for the building environment : about 5 GB.
 
 - Internet access (with large bandwidth, preferably)
 
