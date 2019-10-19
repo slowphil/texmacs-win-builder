@@ -36,7 +36,7 @@ cd /build
 # we rebuild poppler-qt4 from sources, without curl option
 # 1- pull package source (easier with svn)
 if test ! -d mingw-w64-poppler-qt4 ; then
-svn export https://github.com/Alexpux/MINGW-packages/trunk/mingw-w64-poppler-qt4 mingw-w64-poppler-qt4
+svn export https://github.com/msys2/MINGW-packages-dev/trunk/mingw-w64-poppler-qt4 mingw-w64-poppler-qt4
 fi
 cd mingw-w64-poppler-qt4/
 # 2- we remove curl option  
