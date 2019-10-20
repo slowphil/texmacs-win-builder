@@ -82,15 +82,15 @@ mkdir /build/inno
 cd /build/inno
 #first a utility to unpack inno setup itself without running it
 if test ! -z "/build/inno/innounp.exe" ; then
-wget https://downloads.sourceforge.net/project/innounp/innounp/innounp%200.46/innounp046.rar ;
-unrar e innounp046.rar ;
+wget https://downloads.sourceforge.net/project/innounp/innounp/innounp%200.49/innounp049.rar ;
+unrar e innounp049.rar ;
 rm *.rar
 fi
 # then inno setup
 if test ! -z "/build/inno/inno_setup/ISCC.exe" ; then
-wget http://files.jrsoftware.org/is/5/isetup-5.5.8.exe ;
-./innounp.exe -dinno_setup -c{app} -v -x isetup-5.5.8.exe ;
-rm isetup-5.5.8.exe
+wget http://files.jrsoftware.org/is/6/innosetup-6.0.3.exe ;
+./innounp.exe -dinno_setup -c{app} -v -x innosetup-6.0.3.exe ;
+rm innosetup-6.0.3.exe
 fi
 fi
 
