@@ -39,7 +39,7 @@ The setup of the environment, the compilation and the packaging is done in a sin
 
 ## Key files that drive the build process (where to look in case of problems)
 
-After unpacking [the released executable](https://github.com/slowphil/texmacs-win-builder/releases/download/0.91/texmacs-win-sdk-installer-0.91.7z.exe), the setup-tm-sdk.bat batch file is run. It will download and setup the build environment, open an MSys2 shell and run the build-tm.sh script in it.
+After unpacking [the released executable](https://github.com/slowphil/texmacs-win-builder/releases/download/0.91/texmacs-win-sdk-installer-0.91.7z.exe), the setup-tm-sdk.bat batch file is run. It will download and setup the build environment, open an MSys2 shell, fetch the current version of build-tm.sh script and run it (even if the released executable appears to be outdated, it somehow "updates itself").
 
 build-tm.sh will 
 
