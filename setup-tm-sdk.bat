@@ -139,7 +139,7 @@
 
 
 @REM now update the rest
-@"%cwd%"\usr\bin\pacman -S --needed --force --noconfirm ^
+@"%cwd%"\usr\bin\pacman -S --needed --noconfirm ^
 	base python less openssh patch make tar diffutils ca-certificates ^
 	git subversion mintty vim p7zip markdown winpty ^
  	mingw-w64-i686-toolchain ^
