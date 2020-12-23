@@ -27,7 +27,8 @@ fi
 # https://msys2.duckdns.org/repos
 # https://wiki.archlinux.org/index.php/offline_installation_of_packages
 cd /var/cache/pacman/pkg
-wget http://repo.msys2.org/mingw/i686/mingw-w64-i686-qt4-4.8.7-4-any.pkg.tar.xz
+#wget http://repo.msys2.org/mingw/i686/mingw-w64-i686-qt4-4.8.7-4-any.pkg.tar.xz
+wget https://github.com/slowphil/mingw-w64-qt4/releases/download/qt4-4.8.7-4/mingw-w64-i686-qt4-4.8.7-4-any.pkg.tar.xz
 pacman --noconfirm -U mingw-w64-i686-qt4-4.8.7-4-any.pkg.tar.xz
 
 cd /build
@@ -36,6 +37,14 @@ cd /build
 # we rebuild poppler-qt4 from sources, without curl option
 # 1- pull package source (easier with svn)
 if test ! -d mingw-w64-poppler-qt4 ; then
+if true ;
+then
+  # donwload already-built
+  mkdir mingw-w64-poppler-qt4/
+  cd mingw-w64-poppler-qt4/
+  wget https://github.com/slowphil/mingw-w64-poppler-qt4/releases/download/poppler-qt4-0.45/mingw-w64-i686-poppler-qt4-0.45.0-1-any.pkg.tar.xz
+  pacman --noconfirm -U mingw-w64-i686-poppler-qt4-0.45.0-1-any.pkg.tar.xz
+else
 svn export https://github.com/msys2/MINGW-packages-dev/trunk/mingw-w64-poppler-qt4 mingw-w64-poppler-qt4
 fi
 cd mingw-w64-poppler-qt4/
@@ -52,10 +61,10 @@ MINGW_INSTALLS=mingw32 makepkg-mingw -sLi --noconfirm
 cd /build
 if test ! -d mingw-w64-wget ; then
 svn export https://github.com/Alexpux/MINGW-packages/trunk/mingw-w64-wget mingw-w64-wget
-fi
 cd mingw-w64-wget/
 MINGW_INSTALLS=mingw32 makepkg-mingw -sLi --noconfirm --skippgpcheck
-
+fi
+fi
 
 
 # guile 1.8 is not in the MSys2 repos, get it from my Githubs.
