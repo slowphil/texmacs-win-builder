@@ -3,8 +3,6 @@
 This repository provides tools to build TeXmacs for windows in a fully automated way. Running the [the released executable](https://github.com/slowphil/texmacs-win-builder/releases/download/0.95/texmacs-win-sdk-installer-0.95.7z.exe) will setup a full SDK with all dependencies and automatically start the build process for TeXmacs. Eventually it produces TeXmacs for windows installers ([Ready-made such installers for TeXmacs are available here](https://github.com/slowphil/mingw-w64-texmacs/releases/latest)).
 
 The building process is done using the [MSys2/Mingw-w32/Mingw-w64](https://sourceforge.net/p/msys2/wiki/MSYS2%20introduction/) environment.
-This whole stuff was initially (up to Dec. 2020) a modified version of the early [Git for Windows SDK](https://git-for-windows.github.io/#contribute) (many thanks to them for making this so easy). It is now a modified version of the msys2 installer, keeping the initial ease-of-use.
-
 
 ## Pros
 
@@ -52,3 +50,6 @@ build-tm.sh will
 ## Making of the SDK installer itself
 
 Clone this repo in an pre-existing Msys2 install, or in a Linux machine (windows not needed). Then run pack_texmacs_sdk_installer.sh. See details in the script itself.
+
+### changes in the SDK
+Up to Dec. 2020, the SDK installer was a modified version of the early [Git for Windows SDK](https://git-for-windows.github.io/#contribute) (many thanks to them for making this so easy). Due to changes in bath the Git for windows SDK and in MSYS2 itself, the old sdk installer would no longer create a working setup. The SDK is now a modified version of the [msys2 installer](https://github.com/msys2/msys2-installer/releases/latest), tweaked to keep the initial ease-of-use.
