@@ -55,10 +55,17 @@ SCRIPT_PATH="$(cd "$(dirname "$0")" && pwd)"
 
 #SCRIPT_PATH=$(dirname $(readlink -f $0)) should work too
 
-#In principle we would not need to unpack the archive:
-#we could extract the 7z from the sfx (finding its signature in the sfx and discarding what's in front
-#then add our script to the archive and rebundle the sfx as below
-#however the extracted archive then has an unnecessary root folder msys64...
+
+#The fastest would be to pick the 7z archive in sfx,
+# (finding its signature in the sfx and discarding what's in front)
+#offset=$(LANG=C grep -obUaP "\x37\x7A\xBC\xAF\x27\x1C" $1 | cut -d":" -f1)
+#dd bs=$offset skip=1 if=$1 of=$TMPPACK
+# then add our scripts to the archive
+#7z a $TMPPACK $SCRIPT_PATH/setup-tm-sdk.bat $SCRIPT_PATH/build-tm.sh $SCRIPT_PATH/7zSD.sfx
+# and repack as below
+
+#however, the original 7z archive has un unwanted msys64 folder at root
+#that we would need to suppress afterwards
 #By extracting and repacking, we get rid of this msys64 folder
 
 
