@@ -52,4 +52,5 @@ build-tm.sh will
 Clone this repo in an pre-existing Msys2 install, or in a Linux machine (windows not needed). Then run pack_texmacs_sdk_installer.sh. See details in the script itself.
 
 ### changes in the SDK
-Up to Dec. 2020, the SDK installer was a modified version of the early [Git for Windows SDK](https://git-for-windows.github.io/#contribute) (many thanks to them for making this so easy). Due to changes in bath the Git for windows SDK and in MSYS2 itself, the old sdk installer would no longer create a working setup. The SDK is now a modified version of the [msys2 installer](https://github.com/msys2/msys2-installer/releases/latest), tweaked to keep the initial ease-of-use.
+Up to Dec. 2020, the SDK installer was a modified version of the early [Git for Windows SDK](https://git-for-windows.github.io/#contribute) (many thanks to them for making this so easy).
+However, due to changes in MSYS2, the old sdk installer would no longer create a working setup, and because of profound changes in the Git for windows SDK, the previous TeXmacs win SDK installer could not be fixed easily. The TeXmacs win SDK installer is now a modified version of the [msys2 installer](https://github.com/msys2/msys2-installer/releases/latest), tweaked to keep the initial ease-of-use.
