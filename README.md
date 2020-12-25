@@ -3,7 +3,7 @@
 This repository provides tools to compile TeXmacs for windows in a fully automated way. Running the realeased executable should eventually build TeXmacs for windows and create the corresponding installer ([Ready-made such installers for TeXmacs are available here](https://github.com/slowphil/mingw-w64-texmacs/releases/latest)).
 
 The building process is done using the [MSys2/Mingw-w32/Mingw-w64](https://sourceforge.net/p/msys2/wiki/MSYS2%20introduction/) environment.
-The setup of the environment, the compilation and the packaging is done in a single step (no complicated how-to to follow!) by running [the released executable](https://github.com/slowphil/texmacs-win-builder/releases/download/0.94/texmacs-win-sdk-installer-0.94.7z.exe). This whole stuff is essentially a modified version of the [Git for Windows SDK](https://git-for-windows.github.io/#contribute) (many thanks to them for making this so easy).
+The setup of the environment, the compilation and the packaging is done in a single step (no complicated how-to to follow!) by running [the released executable](https://github.com/slowphil/texmacs-win-builder/releases/download/0.95/texmacs-win-sdk-installer-0.95.7z.exe). This whole stuff was initially (up to dec. 2020) a modified version of the early [Git for Windows SDK](https://git-for-windows.github.io/#contribute) (many thanks to them for making this so easy). It is now a modified version of the msys2 installer, keeping the initial ease-of-use.
 
 
 ## Pros
@@ -30,22 +30,25 @@ The setup of the environment, the compilation and the packaging is done in a sin
 
 ## Requirements
 
-- Disk space needed for the building environment : about 5 GB.
+- Disk space needed for the building environment : about 5.5 GB.
 
 - Internet access (with large bandwidth, preferably)
 
 - Beyond the download times, the more cpu cores, the better. As an indication, with 250 Mb/s internet bandwith and 4-core cpu, the complete process takes ~30 min. If your internet connection is slower it can last several hours...
 
 
-## Key files that drive the build process (where to look in case of problems)
+## Key files that drive the build process of TeXmacs (where to look in case of problems)
 
-After unpacking [the released executable](https://github.com/slowphil/texmacs-win-builder/releases/download/0.94/texmacs-win-sdk-installer-0.94.7z.exe), the setup-tm-sdk.bat batch file is run. It will download and setup the build environment, open an MSys2 shell, fetch the current version of build-tm.sh script and run it (even if the released executable seems outdated, it "update itself" to the latest buiding script).
+After unpacking [the released executable](https://github.com/slowphil/texmacs-win-builder/releases/download/0.95/texmacs-win-sdk-installer-0.95.7z.exe), the setup-tm-sdk.bat batch file is run. It will download and setup the build environment, fetch the current version of build-tm.sh script and run it (even if the released executable seems outdated, it "update itself" to the latest buiding script), and finally open an MSys2 shell.
 
 build-tm.sh will 
 
-- invoke pacman to download readily-built dependencies needed by TeXmacs (qt4, freetype, ...).
+- invoke pacman to download readily-built dependencies needed by TeXmacs (freetype, ...).
 
-- (re-)build three of the dependencies from source using makepkg-mingw: poppler-qt4 (the readily-built package has an option that prevents TeXmacs to start), wget and guile1.8 (that are not available already built - for guile we use the sibling repo [mingw-w64-guile1.8](https://github.com/slowphil/mingw-w64-guile1.8))
+- pull or (re-)build four of the dependencies from source using makepkg-mingw: qt4 (no longer available in Msys2 repos, we pull a binary of the latest version in the msys2 repos that [we copied here](https://github.com/slowphil/mingw-w64-qt4)), a prebuilt binary of [poppler-qt4](https://github.com/slowphil/mingw-w64-poppler-qt4), wget and guile1.8 (that are not available in msys2 repos - for guile we use the binary released in the sibling repo [mingw-w64-guile1.8](https://github.com/slowphil/mingw-w64-guile1.8))
 
 - pull the sibling repo [mingw-w64-texmacs](https://github.com/slowphil/mingw-w64-texmacs) and invoke makepkg-mingw to build it. The details of the build options are set in the PKGBUILD of that repo : it will pull the latest svn source, possibly apply patches, then compile, and finally bundle everything that is needed to install on a windows machine in an executable installer (as well as an executable 7z archive for those needing/wanting a "portable" installation).
 
+## Making of the sdk installer itself
+
+Clone this repo in an pre-existing Msys2 install, or in a Linux machine (windows not needed). Then run pack_texmacs_sdk_installer.sh. See details in the script itself.
