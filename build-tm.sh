@@ -69,7 +69,7 @@ fi
 #  cd mingw-w64-wget/
 #  MINGW_INSTALLS=mingw32 makepkg-mingw -sLi --noconfirm --skippgpcheck
 #fi
-pacman -S mingw-w64-i686-wget # now available in repo!
+pacman --noconfirm -S mingw-w64-i686-wget # now available in repo!
 
 
 # guile 1.8 is not in the MSys2 repos, get it from my Githubs.
