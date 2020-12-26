@@ -56,5 +56,5 @@
 
 	@IF ERRORLEVEL 1 PAUSE
 
-@REM	@start mintty -i /msys2.ico -t "texmacs SDK 32-bit" bash --login -i
+@start mintty -i /msys2.ico -t "texmacs SDK 32-bit" bash --login -i
 
