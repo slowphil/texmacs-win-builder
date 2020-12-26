@@ -23,7 +23,7 @@
 @set MSYSTEM=MINGW32
 
 
-@REM now update the rest
+@REM now add dev tools (maybe not all needed)
 @"%cwd%"\usr\bin\pacman -S --needed --noconfirm ^
 	base python less openssh patch make tar diffutils ca-certificates ^
 	git subversion mintty vim p7zip markdown winpty ^
@@ -31,15 +31,17 @@
     base-devel
   
 
-@IF ERRORLEVEL 1 GOTO INSTALL_REST
+@IF ERRORLEVEL 1 @(
+  ECHO Not all packges could be installed. Try re-running this .bat in cmd
+  PAUSE
+  EXIT
+)
 
 @REM Avoid overlapping address ranges
 @IF MINGW32 == %MSYSTEM% @(
 	ECHO Auto-rebasing .dll files
 	CALL "%cwd%"\autorebase.bat
 )
-
-
 
 @REM Before running a shell, let's prevent complaints about "permission denied"
 @REM from MSYS2's /etc/post-install/01-devices.post
@@ -48,10 +50,11 @@
 
 
 @REM now get updated build-tm.sh, run it, finally start an interactive shell
-@"%cwd%"\usr\bin\curl https://raw.githubusercontent.com/slowphil/texmacs-win-builder/master/build-tm.sh > "%cwd%"\build-tm.sh 
-@bash --login -c "cd / && bash ./build-tm.sh"
+@"%cwd%"\usr\bin\curl https://raw.githubusercontent.com/slowphil/texmacs-win-builder/master/build-tm.sh > "%cwd%"\build-tm.sh
+@start "" /D "%cwd%" mingw32.exe ./build-tm.sh
+@REM @bash --login -c "cd / && bash ./build-tm.sh"
 
 	@IF ERRORLEVEL 1 PAUSE
 
-	@start mintty -i /msys2.ico -t "texmacs SDK 32-bit" bash --login -i
-)
+@REM	@start mintty -i /msys2.ico -t "texmacs SDK 32-bit" bash --login -i
+
