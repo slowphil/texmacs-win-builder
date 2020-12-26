@@ -20,16 +20,17 @@ if test ! -d /build ; then
   mkdir -p /build
 fi
 
-
-
 # pacman no longer finds qt4 probably because of https://github.com/msys2/MINGW-packages/issues/3881
 # nevertheless the binary still exists in the repo (for the moment)
 # https://msys2.duckdns.org/repos
 # https://wiki.archlinux.org/index.php/offline_installation_of_packages
-cd /var/cache/pacman/pkg
-#wget http://repo.msys2.org/mingw/i686/mingw-w64-i686-qt4-4.8.7-4-any.pkg.tar.xz
-wget https://github.com/slowphil/mingw-w64-qt4/releases/download/qt4-4.8.7-4/mingw-w64-i686-qt4-4.8.7-4-any.pkg.tar.xz
-pacman --noconfirm -U mingw-w64-i686-qt4-4.8.7-4-any.pkg.tar.xz
+
+if ! (pacman -Q mingw-w64-i686-qt4) ; then
+  cd /var/cache/pacman/pkg
+  #wget http://repo.msys2.org/mingw/i686/mingw-w64-i686-qt4-4.8.7-4-any.pkg.tar.xz
+  wget https://github.com/slowphil/mingw-w64-qt4/releases/download/qt4-4.8.7-4/mingw-w64-i686-qt4-4.8.7-4-any.pkg.tar.xz
+  pacman --noconfirm -U mingw-w64-i686-qt4-4.8.7-4-any.pkg.tar.xz
+fi
 
 cd /build
 
@@ -69,7 +70,7 @@ fi
 #  cd mingw-w64-wget/
 #  MINGW_INSTALLS=mingw32 makepkg-mingw -sLi --noconfirm --skippgpcheck
 #fi
-pacman --noconfirm -S mingw-w64-i686-wget # now available in repo!
+#pacman --noconfirm -S mingw-w64-i686-wget # now available in repo!
 
 
 # guile 1.8 is not in the MSys2 repos, get it from my Githubs.

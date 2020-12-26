@@ -15,6 +15,8 @@
 
 @REM update packages to current
 @"%cwd%"\usr\bin\pacman -Syuu --noconfirm
+@"%cwd%"\usr\bin\pacman -Syuu --noconfirm
+@"%cwd%"\usr\bin\pacman -Syuu --noconfirm
 
 
 @REM set MSYSTEM so that MSYS2 starts up in the correct mode
