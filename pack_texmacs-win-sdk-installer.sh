@@ -19,13 +19,13 @@
 #https://github.com/git-for-windows/build-extra/commit/ef78e61c865379ce2c07ec3b7fc01c6c930a054d
 # not that in the standard 7z sdk (https://www.7-zip.org/sdk.html)
  
-sfx="msys2-base-x86_64-20201109.sfx.exe"
-date="2020-11-09"
+sfx="msys2-base-x86_64-20211130.tar.xz"
+date="2021-11-30"
 
 if test -z "$1" ; then 
   wget "https://github.com/msys2/msys2-installer/releases/download/$date/$sfx"
   if test ! -f $sfx ; then
-    echo "Could not download $sfx msys2-base-x86_64-20201109.sfx.exe, stopping."
+    echo "Could not download $sfx, stopping."
     echo " "
     echo "You may run this script with an alternate sfx.exe or tar.xz file"
     echo "downloaded from https://github.com/msys2/msys2-installer/releases"

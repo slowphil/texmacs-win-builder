@@ -125,7 +125,7 @@ fi
 if test ! -d "/build/SumatraPDF" ; then
 mkdir /build/SumatraPDf
 cd /build/SumatraPDF
-wget https://www.sumatrapdfreader.org/dl/SumatraPDF-3.1.2.zip
+wget https://kjkpub.nyc3.digitaloceanspaces.com/software/sumatrapdf/rel/SumatraPDF-3.1.2.zip
 7z x SumatraPDF-3.1.2.zip
 rm *.zip
 fi
