@@ -10,9 +10,13 @@ The building process is done using the [MSys2/Mingw-w32/Mingw-w64](https://sourc
 
 - No need to wait for the next official release of TeXmacs to test novelties and enjoy the bugfixes.
 
-- A spell checker is bundled with TeXmacs (additional dictionaries require manual install, though).
+- This version of TeXmacs is packed with the Hunspell spell checker.
+Hunspell is OpenOffice/LibreOffice's spellchecker, more actively developped than Aspell that ships with the official TeXmacs for windows. Also, for sake of not bloating the package, we pack far fewer dictionaries but additional ones can be manually installed.
 
-- This version of TeXmacs can be used as an "equation editor" for Inkscape and LibreOffice
+- This version of TeXmacs packs several custom plugins:
+  - a plugin allowing to use TeXmacs as a fully graphical "equation editor" for Inkscape and LibreOffice
+  - [outline plugin](https://github.com/texmacs/tm-forge/tree/main/miscellanea/outline), to reorganize large documents in a structured manner.
+  - [komment plugin](https://github.com/texmacs/tm-forge/tree/main/miscellanea/komments): tools for handling proposed text changes in (offline) collaborative editing
 
 - This building environment and the dependencies are always created fully up-to-date.
 
@@ -41,9 +45,9 @@ After unpacking [the released executable](https://github.com/slowphil/texmacs-wi
 
 build-tm.sh will 
 
-- invoke pacman to download readily-built dependencies needed by TeXmacs (freetype, ...).
+- invoke pacman to download readily-built dependencies needed by TeXmacs (freetype, qt5 ...).
 
-- pull or (re-)build four of the dependencies from source using makepkg-mingw: qt4 (no longer available in Msys2 repos, we pull a binary of the latest version in the msys2 repos that [we copied here](https://github.com/slowphil/mingw-w64-qt4)), a prebuilt binary of [poppler-qt4](https://github.com/slowphil/mingw-w64-poppler-qt4), wget and guile1.8 (that are not available in msys2 repos - for guile we use the binary released in the sibling repo [mingw-w64-guile1.8](https://github.com/slowphil/mingw-w64-guile1.8))
+- pull or (re-)build some the dependencies from source using makepkg-mingw: qt4 (no longer available in Msys2 repos, we pull a binary of the latest version in the msys2 repos that [we copied here](https://github.com/slowphil/mingw-w64-qt4)) and guile1.8 (that are not available in msys2 repos - for guile we use the binary released in the sibling repo [mingw-w64-guile1.8](https://github.com/slowphil/mingw-w64-guile1.8))
 
 - pull the sibling repo [mingw-w64-texmacs](https://github.com/slowphil/mingw-w64-texmacs) and invoke makepkg-mingw to build it. The details of the build options are set in the PKGBUILD of that repo : it will pull the latest svn source, possibly apply patches, then compile, and finally bundle everything that is needed to install on a windows machine in an executable installer (as well as an executable 7z archive for those needing/wanting a "portable" installation).
 
