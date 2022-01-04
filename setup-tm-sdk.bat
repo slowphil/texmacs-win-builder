@@ -26,7 +26,7 @@
 @REM now add dev tools (maybe not all needed)
 @"%cwd%"\usr\bin\pacman -S --needed --noconfirm ^
 	base python less openssh patch make tar diffutils ca-certificates ^
-	git subversion mintty vim p7zip markdown winpty ^
+	git subversion mintty vim p7zip markdown winpty unrar ^
  	mingw-w64-i686-toolchain ^
     base-devel
   
