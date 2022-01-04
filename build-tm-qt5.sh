@@ -20,57 +20,6 @@ if test ! -d /build ; then
   mkdir -p /build
 fi
 
-# pacman no longer finds qt4 probably because of https://github.com/msys2/MINGW-packages/issues/3881
-# nevertheless the binary still exists in the repo (for the moment)
-# https://msys2.duckdns.org/repos
-# https://wiki.archlinux.org/index.php/offline_installation_of_packages
-
-if ! (pacman -Q mingw-w64-i686-qt4) ; then
-  cd /var/cache/pacman/pkg
-  #wget http://repo.msys2.org/mingw/i686/mingw-w64-i686-qt4-4.8.7-4-any.pkg.tar.xz
-  wget https://github.com/slowphil/mingw-w64-qt4/releases/download/qt4-4.8.7-4/mingw-w64-i686-qt4-4.8.7-4-any.pkg.tar.xz
-  pacman --noconfirm -U mingw-w64-i686-qt4-4.8.7-4-any.pkg.tar.xz
-fi
-
-cd /build
-
-# libcurl option breaks poppler dll and exes on 32 bits
-# we rebuild poppler-qt4 from sources, without curl option
-# 1- pull package source (easier with svn)
-if test ! -d mingw-w64-poppler-qt4 ; then
-  if true ;
-  then
-    # donwload already-built
-    mkdir mingw-w64-poppler-qt4/
-    cd mingw-w64-poppler-qt4/
-    wget https://github.com/slowphil/mingw-w64-poppler-qt4/releases/download/poppler-qt4-0.45/mingw-w64-i686-poppler-qt4-0.45.0-1-any.pkg.tar.xz
-    pacman --noconfirm -U mingw-w64-i686-poppler-qt4-0.45.0-1-any.pkg.tar.xz
-  else
-    #svn export https://github.com/msys2/MINGW-packages-dev/trunk/mingw-w64-poppler-qt4 mingw-w64-poppler-qt4
-    #cd mingw-w64-poppler-qt4/
-    ## 2- we remove curl option  
-    #sed -i '/--enable-libcurl/d' ./PKGBUILD
-    ## 3- bump version  
-    #sed -i 's/pkgver=0.36.0/pkgver=0.45.0/g' ./PKGBUILD
-    #sed -i 's/93cc067b23c4ef7421380d3e8bd7c940b2027668446750787d7c1cb42720248e/96dd1a6024bcdaa4530a3b49687db3d5c24ddfd072ccb37c6de0e42599728798/g' ./PKGBUILD
-    ## fix typo
-    #sed -i 's/$}/${/g' ./PKGBUILD
-    
-    #patching already done here:
-    git clone https://github.com/slowphil/mingw-w64-poppler-qt4.git
-    cd mingw-w64-poppler-qt4/
-    MINGW_INSTALLS=mingw32 makepkg-mingw -sLi --noconfirm
-  fi
-fi
-
-# we build mingw-w64-wget from sources (no binary available)
-#cd /build
-#if test ! -d mingw-w64-wget ; then
-#  svn export https://github.com/Alexpux/MINGW-packages/trunk/mingw-w64-wget mingw-w64-wget
-#  cd mingw-w64-wget/
-#  MINGW_INSTALLS=mingw32 makepkg-mingw -sLi --noconfirm --skippgpcheck
-#fi
-#pacman --noconfirm -S mingw-w64-i686-wget # now available in repo!
 
 
 # guile 1.8 is not in the MSys2 repos, get it from my Githubs.
@@ -136,7 +85,7 @@ if test ! -d mingw-w64-texmacs ; then
   git clone https://github.com/slowphil/mingw-w64-texmacs.git
 fi
 cd mingw-w64-texmacs/
-MINGW_ARCH=mingw32 makepkg-mingw -sL --noconfirm 
+MINGW_ARCH=mingw32 makepkg-mingw -sL --noconfirm -p PKGBUILD-qt5
 
 
 #end
