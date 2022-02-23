@@ -130,6 +130,15 @@ wget https://kjkpub.nyc3.digitaloceanspaces.com/software/sumatrapdf/rel/SumatraP
 rm *.zip
 fi
 
+# get Imagemagick portable
+if test ! -d "/build/Imagemagick" ; then
+mkdir /build/Imagemagick
+cd /build/Imagemagick
+wget https://download.imagemagick.org/ImageMagick/download/binaries/ImageMagick-7.1.0-portable-Q8-x86.zip
+7z x ImageMagick-7.1.0-portable-Q8-x86.zip
+rm *.zip
+fi
+
 # now, finally download and build texmacs
 cd /build
 if test ! -d mingw-w64-texmacs ; then

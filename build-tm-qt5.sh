@@ -20,8 +20,6 @@ if test ! -d /build ; then
   mkdir -p /build
 fi
 
-
-
 # guile 1.8 is not in the MSys2 repos, get it from my Githubs.
 cd /build
 if test ! -d mingw-w64-guile1.8 ; then
@@ -76,6 +74,15 @@ mkdir /build/SumatraPDf
 cd /build/SumatraPDF
 wget https://kjkpub.nyc3.digitaloceanspaces.com/software/sumatrapdf/rel/SumatraPDF-3.1.2.zip
 7z x SumatraPDF-3.1.2.zip
+rm *.zip
+fi
+
+# get Imagemagick portable
+if test ! -d "/build/Imagemagick" ; then
+mkdir /build/Imagemagick
+cd /build/Imagemagick
+wget https://download.imagemagick.org/ImageMagick/download/binaries/ImageMagick-7.1.0-portable-Q8-x86.zip
+7z x ImageMagick-7.1.0-portable-Q8-x86.zip
 rm *.zip
 fi
 
